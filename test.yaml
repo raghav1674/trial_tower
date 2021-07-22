@@ -1,0 +1,16 @@
+- name: Make sure that packages are installed
+  yum:
+    name:
+    - haproxy
+    - firewalld
+    state: present
+
+
+- name: Make sure that services are started and enabled
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  loop:
+  - haproxy
+  - firewalld
